@@ -1,17 +1,25 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import About from './Pages/About/About';
-import Projects from './Pages/Projects/Projects';
-import Contact from './Pages/Contact/Contact'
+import About from './pages/About/About';
+import Projects from './pages/Projects/Projects';
+import Contact from './pages/Contact/Contact'
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import NotFound from './pages/notfound/NotFound';
 
 function App() {
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<About />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/Contact" element={<Contact />} />
-    </Routes>
-  </BrowserRouter>
+    <>
+    <Header/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer/>
+    </>
   );
 }
 
