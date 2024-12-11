@@ -1,49 +1,86 @@
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaMedium,
+  FaInstagram,
+  FaWhatsapp,
+  FaEnvelope,
+} from "react-icons/fa";
+
 export default function Footer() {
-    return (
-      <div className="fixed bottom-0 w-full bg-white py-4 sm:py-32 mt-auto">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <h2 className="text-center text-lg/8 font-semibold text-gray-900">
-            Trusted by the world’s most innovative teams
-          </h2>
-          <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            <img
-              alt="Transistor"
-              src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-gray-900.svg"
-              width={158}
-              height={48}
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-            />
-            <img
-              alt="Reform"
-              src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-gray-900.svg"
-              width={158}
-              height={48}
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-            />
-            <img
-              alt="Tuple"
-              src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-gray-900.svg"
-              width={158}
-              height={48}
-              className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-            />
-            <img
-              alt="SavvyCal"
-              src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-gray-900.svg"
-              width={158}
-              height={48}
-              className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-            />
-            <img
-              alt="Statamic"
-              src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-gray-900.svg"
-              width={158}
-              height={48}
-              className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-            />
-          </div>
+  return (
+    <div className="fixed bottom-0 w-full py-4 mt-auto backdrop-blur-md bg-white/30">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div 
+        className="flex items-center justify-center  mx-auto mt-2 grid grid-cols-7 items-center gap-x-2 gap-y-2 sm:max-w-xl"
+>
+          <a
+            href="https://github.com/khaoulabenchari"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-700 hover:text-gray-900 transition-colors duration-200"
+          >
+            <FaGithub className="w-6 h-6" />
+          </a>
+
+          <a
+            href="https://linkedin.com/in/khaoulabenchari"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+          >
+            <FaLinkedin className="w-6 h-6" />
+          </a>
+
+          {/* Twitter is now X, but react-icons provides a Twitter icon. Use it as a stand-in for X. */}
+          <a
+            href="https://twitter.com/khaoulabenchari"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:text-blue-700 transition-colors duration-200"
+          >
+            <FaTwitter className="w-6 h-6" />
+          </a>
+
+          <a
+            href="https://khaoulabenchari.medium.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black hover:text-gray-800 transition-colors duration-200"
+          >
+            <FaMedium className="w-6 h-6" />
+          </a>
+
+          <a
+            href="https://instagram.com/khaoulabenchari"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-pink-600 hover:text-pink-800 transition-colors duration-200"
+          >
+            <FaInstagram className="w-6 h-6" />
+          </a>
+
+          <a
+            href="https://wa.me/+212708906580"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-500 hover:text-green-700 transition-colors duration-200"
+          >
+            <FaWhatsapp className="w-6 h-6" />
+          </a>
+
+          <a
+            href="mailto:khabenchari@example.com"
+            className="text-gray-700 hover:text-gray-900 transition-colors duration-200"
+          >
+            <FaEnvelope className="w-6 h-6" />
+          </a>
         </div>
+        <h4 className="text-right text-gray-900">
+          © 2024 Khaoula Benchari. All Rights Reserved.
+        </h4>
       </div>
-    )
-  }
-  
+    </div>
+  );
+}

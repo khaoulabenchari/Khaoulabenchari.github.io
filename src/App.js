@@ -10,14 +10,17 @@ function App() {
   return (
     <>
     <Header/>
+    <div className='pb-16'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<About />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/Contact" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/test" element={<Footer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      </div>
       <Footer/>
     </>
   );
