@@ -17,9 +17,10 @@ function classNames(...classes) {
 
 export default function Header() {
   const [navigation, setNavigation] = useState([
-    { name: "About me", href: "/", current: true },
-    { name: "Team", href: "/", current: false },
-    { name: "Projects", href: "/projects", current: false },
+    { name: "About me", href: "/", current: false },
+    { name: "Education & Certifications", href: "/education", current: false },
+    { name: "Project Showcase", href: "/projects", current: true },
+    { name: "Blog & Articles", href: "/blog", current: false },
     { name: "Contact", href: "/contact", current: false },
   ]);
 
@@ -57,7 +58,7 @@ export default function Header() {
             <div className="flex shrink-0 items-center">
               <img
                 alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+                src="assets/images/logo-2.png"
                 className="h-8 w-auto"
               />
             </div>
@@ -70,7 +71,7 @@ export default function Header() {
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          : "text-gray-500 hover:bg-gray-700 hover:text-white",
                         "block rounded-md px-3 py-2 text-base font-medium"
                       )}
                       onClick={() => {  handleClick(index);}}

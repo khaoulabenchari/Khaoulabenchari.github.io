@@ -1,8 +1,41 @@
 import { useState } from 'react'
 import { Field, Label, Switch } from '@headlessui/react'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey = process.env.REACT_APP_SUPABASE_KEY;
+
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 export default function ContactForm() {
   const [agreed, setAgreed] = useState(false)
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" , company : "", phone : "" });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const { data, error } = await supabase.from("contacts").insert([formData]);
+
+      if (error) throw error;
+
+      setSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="isolate bg-white px-6 py-16 sm:py-32 lg:px-8">
@@ -21,38 +54,28 @@ export default function ContactForm() {
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Contact me</h2>
         <p className="mt-2 text-lg/8 text-gray-600">I'm always excited to work on new projects or discuss innovative ideas. Feel free to reach out!</p>
+        {success && <p className="text-green-500">Thank you! We will get back to you soon.</p>}
+        {error && <p className="text-red-500">Error: {error}</p>}
       </div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
-            <label htmlFor="first-name" className="block text-sm/6 font-semibold text-gray-900">
-              First name
+            <label htmlFor="name" className="block text-sm/6 font-semibold text-gray-900">
+              Name
             </label>
             <div className="mt-2.5">
               <input
-                id="first-name"
-                name="first-name"
+                id="name"
+                name="name"
                 type="text"
                 autoComplete="given-name"
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
           </div>
           <div>
-            <label htmlFor="last-name" className="block text-sm/6 font-semibold text-gray-900">
-              Last name
-            </label>
-            <div className="mt-2.5">
-              <input
-                id="last-name"
-                name="last-name"
-                type="text"
-                autoComplete="family-name"
-                className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
-              />
-            </div>
-          </div>
-          <div className="sm:col-span-2">
             <label htmlFor="company" className="block text-sm/6 font-semibold text-gray-900">
               Company
             </label>
@@ -63,6 +86,8 @@ export default function ContactForm() {
                 type="text"
                 autoComplete="organization"
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                value={formData.company}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -77,6 +102,8 @@ export default function ContactForm() {
                 type="email"
                 autoComplete="email"
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -92,6 +119,7 @@ export default function ContactForm() {
                   type="text"
                   placeholder="212-708091080"
                   className="block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6"
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -107,6 +135,8 @@ export default function ContactForm() {
                 rows={4}
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 defaultValue={''}
+                value={formData.message}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -145,30 +175,3 @@ export default function ContactForm() {
     </div>
   )
 }
-
-
-
-
-
-// function ContactForm() {
-//   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log(formData);
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input name="name" placeholder="Name" onChange={handleChange} />
-//       <input name="email" placeholder="Email" onChange={handleChange} />
-//       <textarea name="message" placeholder="Message" onChange={handleChange} />
-//       <button type="submit">Send</button>
-//     </form>
-//   );
-// }
-// export default ContactForm ;

@@ -4,8 +4,8 @@ import Projects from './pages/Projects/Projects';
 import Contact from './pages/Contact/Contact'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import NotFound from './pages/notfound/NotFound';
-
+import NotFound from './components/notfound/NotFound';
+import EducationCertification from './pages/education/education';
 function App() {
   return (
     <>
@@ -16,7 +16,8 @@ function App() {
           <Route path="/" element={<About />}  />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/test" element={<Footer />} />
+          <Route path="/education" element={<EducationCertification />} />
+          <Route path="/blog" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
