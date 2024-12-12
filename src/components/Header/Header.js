@@ -17,9 +17,9 @@ function classNames(...classes) {
 
 export default function Header() {
   const [navigation, setNavigation] = useState([
-    { name: "About me", href: "/", current: false },
+    { name: "About me", href: "/", current: true },
     { name: "Education & Certifications", href: "/education", current: false },
-    { name: "Project Showcase", href: "/projects", current: true },
+    { name: "Project Showcase", href: "/projects", current: false },
     { name: "Blog & Articles", href: "/blog", current: false },
     { name: "Contact", href: "/contact", current: false },
   ]);
