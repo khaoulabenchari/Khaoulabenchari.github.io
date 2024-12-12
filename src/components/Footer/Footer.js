@@ -10,11 +10,9 @@ import {
 
 export default function Footer() {
   return (
-    <div className="fixed bottom-0 w-full py-4 mt-auto backdrop-blur-md bg-white/30">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div 
-        className="flex items-center justify-center  mx-auto mt-2 grid grid-cols-7 items-center gap-x-2 gap-y-2 sm:max-w-xl"
->
+    <div className="fixed bottom-0 w-full py-2 mt-auto backdrop-blur-md bg-white/30">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-center mx-auto  mt-2 grid grid-cols-2 gap-x-2">
+        <div className="mx-auto mt-2 grid grid-cols-7  gap-x-2 gap-y-2 sm:max-w-xl">
           <a
             href="https://github.com/khaoulabenchari"
             target="_blank"
@@ -71,15 +69,18 @@ export default function Footer() {
           </a>
 
           <a
-            href="mailto:khabenchari@example.com"
-            className="text-gray-700 hover:text-gray-900 transition-colors duration-200"
+            href="mailto:khabenchari@gmail.com"
+            className="text-red-700 hover:text-red-900 transition-colors duration-200"
           >
             <FaEnvelope className="w-6 h-6" />
           </a>
         </div>
-        <h4 className="text-right text-gray-900">
+        <div>
+        <h5 className="text-right text-gray-900 ">
           © 2024 Khaoula Benchari. All Rights Reserved.
-        </h4>
+        </h5>
+        </div>
+  
       </div>
     </div>
   );
