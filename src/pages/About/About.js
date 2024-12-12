@@ -40,7 +40,7 @@ export default function About() {
                   <li>
                     🌱 Currently diving deeper into{" "}
                     <span className="font-semibold">
-                      Object-Oriented Design (OOD)
+                      best practices
                     </span>{" "}
                     and full-stack development.
                   </li>

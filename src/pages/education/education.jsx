@@ -2,7 +2,7 @@ import React from "react";
 
 const EducationCertification = () => {
   return (
-    <section className="bg-white py-12 px-6 md:px-12">
+    <section className="bg-white py-12 px-6 md:px-12 mt-16">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
           Education & Certifications
